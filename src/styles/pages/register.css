@@ -1,0 +1,58 @@
+.auth-form {
+  display: grid;
+  gap: 18px;
+}
+.two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+details {
+  border-radius: 16px;
+  background: var(--color-fog-white);
+  padding: 14px 16px;
+}
+summary {
+  display: flex;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-slate-gray);
+  font-size: 13px;
+}
+.optional-fields {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+}
+.terms {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--color-slate-gray);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.terms input {
+  margin-top: 2px;
+  accent-color: var(--color-ink-black);
+}
+.submit-button {
+  width: 100%;
+}
+.switch-copy {
+  margin: 2px 0 0;
+  color: var(--color-slate-gray);
+  font-size: 14px;
+  text-align: center;
+}
+.switch-copy a {
+  color: var(--color-ink-black);
+  text-decoration: none;
+}
+@media (max-width: 480px) {
+  .two-cols {
+    grid-template-columns: 1fr;
+  }
+}

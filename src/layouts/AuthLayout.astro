@@ -1,0 +1,237 @@
+---
+import Baselayout from "./Baselayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  intro: string;
+}
+
+const { title, description, heading, intro } = Astro.props;
+---
+
+<Baselayout title={title} description={description}>
+  <main class="auth-page">
+    <section class="auth-story">
+      <a class="brand" href="/"
+        ><span><i class="ti ti-paw-filled"></i></span> VetCare</a
+      >
+      <div class="story-copy">
+        <span class="eyebrow">Cuidado conectado</span>
+        <h1 class="display-serif">
+          Más tiempo para<br /><em>estar presentes.</em>
+        </h1>
+        <p>
+          Citas, mascotas e historias clínicas en una experiencia clara y
+          cercana.
+        </p>
+      </div>
+      <div class="story-art" aria-hidden="true">
+        <div class="pet-bubble"><i class="ti ti-cat"></i></div>
+        <div class="mini-card">
+          <i class="ti ti-calendar-check"></i><span
+            ><strong>Próxima cita confirmada</strong><small
+              >Viernes · 10:30 a. m.</small
+            ></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="auth-form-side">
+      <div class="auth-form-wrap">
+        <a class="back-link" href="/"
+          ><i class="ti ti-arrow-left"></i> Volver al inicio</a
+        >
+        <header>
+          <span class="eyebrow">Bienvenido a VetCare</span><h2
+            class="display-serif"
+          >
+            {heading}
+          </h2><p>{intro}</p>
+        </header>
+        <slot />
+      </div>
+    </section>
+  </main>
+</Baselayout>
+
+<style>
+  .auth-page {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: minmax(380px, 0.9fr) 1.1fr;
+  }
+  .auth-story {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 40px 54px;
+    background: var(--color-blush-peach);
+    color: var(--color-sienna-brown);
+  }
+  .brand {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-sienna-brown);
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .brand span {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+  }
+  .story-copy {
+    position: relative;
+    z-index: 2;
+    margin-block: auto;
+  }
+  .story-copy .eyebrow {
+    color: var(--color-sienna-brown);
+    opacity: 0.62;
+  }
+  h1 {
+    margin: 20px 0 24px;
+    font-size: clamp(48px, 5vw, 72px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+  h1 em {
+    font-weight: 400;
+  }
+  .story-copy p {
+    max-width: 430px;
+    font-size: 16px;
+    line-height: 1.55;
+    opacity: 0.76;
+  }
+  .story-art {
+    position: relative;
+    z-index: 2;
+    min-height: 165px;
+  }
+  .story-art::before {
+    position: absolute;
+    content: "";
+    width: 340px;
+    height: 340px;
+    right: -150px;
+    bottom: -190px;
+    border: 1px solid rgba(93, 42, 26, 0.2);
+    border-radius: 50%;
+  }
+  .pet-bubble {
+    position: absolute;
+    right: 12px;
+    top: -55px;
+    display: flex;
+    width: 80px;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    font-size: 34px;
+    box-shadow: var(--shadow-subtle);
+  }
+  .mini-card {
+    position: absolute;
+    left: 0;
+    bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 18px;
+    background: white;
+    padding: 16px 18px;
+    box-shadow: var(--shadow-subtle);
+    color: var(--color-ink-black);
+  }
+  .mini-card > i {
+    font-size: 24px;
+    color: var(--color-sienna-brown);
+  }
+  .mini-card span {
+    display: grid;
+    gap: 4px;
+  }
+  .mini-card strong {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .mini-card small {
+    color: var(--color-slate-gray);
+    font-size: 11px;
+  }
+  .auth-form-side {
+    display: grid;
+    place-items: center;
+    padding: 48px 24px;
+  }
+  .auth-form-wrap {
+    width: min(100%, 500px);
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 60px;
+    color: var(--color-slate-gray);
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .back-link:hover {
+    color: var(--color-ink-black);
+  }
+  header {
+    margin-bottom: 32px;
+  }
+  h2 {
+    margin: 12px 0;
+    font-size: 47px;
+    font-weight: 400;
+    line-height: 1.05;
+  }
+  header p {
+    margin: 0;
+    color: var(--color-slate-gray);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  @media (max-width: 800px) {
+    .auth-page {
+      grid-template-columns: 1fr;
+    }
+    .auth-story {
+      min-height: 250px;
+      padding: 28px;
+    }
+    .story-copy {
+      margin-top: 60px;
+    }
+    .story-copy h1 {
+      font-size: 48px;
+    }
+    .story-copy p,
+    .story-art {
+      display: none;
+    }
+    .auth-form-side {
+      padding: 42px 20px 70px;
+    }
+    .back-link {
+      margin-bottom: 42px;
+    }
+  }
+</style>

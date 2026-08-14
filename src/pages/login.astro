@@ -1,0 +1,54 @@
+---
+import AuthLayout from "@/layouts/AuthLayout.astro";
+import "@/styles/pages/login.css";
+---
+
+<AuthLayout
+  title="Ingresar — VetCare"
+  description="Ingresa a tu espacio VetCare."
+  heading="Qué alegría verte."
+  intro="Ingresa tus datos para continuar cuidando de quienes más quieres."
+>
+  <form id="login-form" class="auth-form">
+    <div id="login-error" class="form-error" role="alert"></div>
+    <div id="expired-message" class="form-success" role="status">
+      Tu sesión finalizó. Ingresa nuevamente para continuar.
+    </div>
+    <div class="field">
+      <label for="username">Usuario</label>
+
+      <input
+        id="username"
+        name="username"
+        autocomplete="username"
+        placeholder="Tu nombre de usuario"
+        required
+      />
+    </div>
+    <div class="field">
+      <div class="label-row">
+        <label for="password">Contraseña</label>
+        <button id="toggle-password" type="button">Mostrar</button>
+      </div>
+      <div class="password-wrap">
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Tu contraseña"
+          required
+        /><i class="ti ti-lock"></i>
+      </div>
+    </div>
+    <button class="pill-button submit-button" type="submit"
+      >Ingresar a VetCare <i class="ti ti-arrow-right"></i></button
+    >
+    <p class="switch-copy">
+      ¿Aún no tienes una cuenta? <a href="/register">Créala aquí →</a>
+    </p>
+  </form>
+</AuthLayout>
+
+<script src="../lib/pages/login.ts"></script>
+

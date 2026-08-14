@@ -1,0 +1,64 @@
+<footer>
+  <div class="page-shell footer-inner">
+    <div>
+      <a class="brand" href="/"><i class="ti ti-paw-filled"></i> VetCare</a>
+      <p>Cuidado veterinario organizado alrededor de quienes más quieres.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/login">Ingresar</a>
+      <a href="/register">Crear cuenta</a>
+      <a href="/#servicios">Servicios</a>
+    </div>
+    <span>© {new Date().getFullYear()} VetCare</span>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 56px 0 32px;
+    background: var(--color-ink-black);
+    color: white;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr auto;
+    gap: 40px;
+    align-items: end;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  p {
+    max-width: 370px;
+    margin: 16px 0 0;
+    color: #b8bac0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .footer-links a,
+  span {
+    color: #d5d6d9;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .footer-links a:hover {
+    color: white;
+  }
+  @media (max-width: 720px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+  }
+</style>

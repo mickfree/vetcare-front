@@ -1,0 +1,41 @@
+.auth-form {
+  display: grid;
+  gap: 20px;
+}
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.label-row button {
+  border: 0;
+  background: none;
+  color: var(--color-slate-gray);
+  font-size: 12px;
+}
+.password-wrap {
+  position: relative;
+}
+.password-wrap input {
+  padding-right: 44px;
+}
+.password-wrap i {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  color: var(--color-ash-gray);
+}
+.submit-button {
+  width: 100%;
+  margin-top: 6px;
+}
+.switch-copy {
+  margin: 4px 0 0;
+  color: var(--color-slate-gray);
+  font-size: 14px;
+  text-align: center;
+}
+.switch-copy a {
+  color: var(--color-ink-black);
+  text-decoration: none;
+}

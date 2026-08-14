@@ -1,0 +1,180 @@
+---
+import Baselayout from "@/layouts/Baselayout.astro";
+import PublicHeader from "@/components/PublicHeader.astro";
+import PublicFooter from "@/components/PublicFooter.astro";
+import "@/styles/pages/index.css";
+---
+
+<Baselayout
+  title="VetCare — Su salud, siempre cerca"
+  description="Organiza las mascotas, citas e historias clínicas de tu familia en un solo lugar."
+>
+  <PublicHeader current="inicio" />
+  <main>
+    <section class="hero page-shell">
+      <div class="hero-copy">
+        <span class="eyebrow">Cuidado que acompaña</span>
+        <h1 class="display-serif">
+          Su bienestar,<br /><em>siempre cerca.</em>
+        </h1>
+        <p>
+          Todo lo que necesitas para cuidar a tus mascotas: citas, servicios e
+          historial médico, ordenado en un solo lugar.
+        </p>
+        <div class="hero-actions">
+          <a class="pill-button" href="/register"
+            >Comenzar ahora <i class="ti ti-arrow-up-right"></i></a
+          >
+          <a class="pill-button pill-button--ghost" href="#como-funciona"
+            >Ver cómo funciona</a
+          >
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Vista previa de VetCare">
+        <div class="peach-orbit orbit-one"></div>
+        <div class="peach-orbit orbit-two"></div>
+
+        <article class="artifact pet-card">
+          <div class="pet-avatar"><i class="ti ti-dog"></i></div>
+          <div>
+            <span>Próxima cita</span><strong>Luna</strong><small
+              >Control general · 10:30</small>
+          </div>
+          <i class="ti ti-arrow-up-right"></i>
+        </article>
+
+        <article class="artifact schedule-card">
+          <div class="artifact-heading">
+            <div><span>Agosto</span><strong>15, viernes</strong></div><span
+              class="day-dot">3</span>
+          </div>
+          <div class="timeline-row">
+            <time>10:30</time><span></span><div>
+              <strong>Control general</strong><small>Dra. Valeria Ruiz</small>
+            </div>
+          </div>
+          <div class="timeline-row muted">
+            <time>12:00</time><span></span><div>
+              <strong>Vacunación</strong><small>30 min</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="artifact health-card">
+          <span>Salud al día</span>
+          <div class="health-ring"><strong>92<small>%</small></strong></div>
+          <small>Próxima vacuna en 28 días</small>
+        </article>
+
+        <div class="care-note">
+          <i class="ti ti-heart-filled"></i><span>Cuidamos cada etapa</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="services-section">
+      <div class="page-shell">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Una experiencia más simple</span><h2
+              class="display-serif"
+            >
+              Cuidar bien empieza<br />por tenerlo todo claro.
+            </h2>
+          </div>
+          <p>
+            Menos tiempo organizando información. Más tiempo acompañando a tu
+            mascota.
+          </p>
+        </div>
+        <div class="service-grid">
+          <article>
+            <span class="service-number">01</span><i
+              class="ti ti-calendar-event"></i><h3>Citas sin vueltas</h3><p>
+              Programa, revisa y sigue cada consulta veterinaria desde un mismo
+              calendario.
+            </p><a href="/register">Agendar una cita →</a>
+          </article>
+          <article>
+            <span class="service-number">02</span><i class="ti ti-paw"></i><h3>
+              Todos sus perfiles
+            </h3><p>
+              Guarda los datos importantes de cada mascota y mantenlos siempre
+              actualizados.
+            </p><a href="/register">Registrar mascota →</a>
+          </article>
+          <article>
+            <span class="service-number">03</span><i class="ti ti-notes"></i><h3
+            >
+              Historia que acompaña
+            </h3><p>
+              Consulta diagnósticos, tratamientos y recomendaciones cuando los
+              necesites.
+            </p><a href="/register">Ver historias →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="flow-section page-shell">
+      <div class="flow-visual">
+        <div class="paw-badge"><i class="ti ti-paw-filled"></i></div>
+        <div class="flow-card flow-card-one">
+          <span>1</span><div>
+            <strong>Crea su perfil</strong><small>Datos, raza y cuidados</small>
+          </div>
+        </div>
+        <div class="flow-card flow-card-two">
+          <span>2</span><div>
+            <strong>Elige un servicio</strong><small
+              >Según lo que necesita</small>
+          </div>
+        </div>
+        <div class="flow-card flow-card-three">
+          <span>3</span><div>
+            <strong>Reserva su cita</strong><small>En pocos minutos</small>
+          </div>
+        </div>
+      </div>
+      <div class="flow-copy">
+        <span class="eyebrow">Así de fácil</span><h2 class="display-serif">
+          Tres pasos para estar <em>más tranquilos.</em>
+        </h2><p>
+          VetCare conecta la información de tus mascotas con sus citas y
+          cuidados. Sin papeles sueltos ni datos perdidos.
+        </p><a class="pill-button" href="/register"
+          >Crear mi cuenta <i class="ti ti-arrow-right"></i></a>
+      </div>
+    </section>
+
+    <section id="cuidado" class="quote-section page-shell">
+      <div class="quote-card">
+        <i class="ti ti-quote"></i>
+        <blockquote class="display-serif">
+          “Porque cada mascota es parte de una historia que merece ser cuidada.”
+        </blockquote>
+        <div>
+          <span class="quote-line"></span><p>
+            VetCare une a familias y veterinarios alrededor de una atención más
+            cercana y organizada.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing page-shell">
+      <span class="eyebrow">Empieza hoy</span>
+      <h2 class="display-serif">
+        Todo listo para cuidarles<br /><em>como se merecen.</em>
+      </h2>
+      <div>
+        <a class="pill-button" href="/register">Crear cuenta gratis</a><a
+          class="pill-button pill-button--ghost"
+          href="/login">Ya tengo una cuenta</a>
+      </div>
+    </section>
+  </main>
+  <PublicFooter />
+</Baselayout>
+

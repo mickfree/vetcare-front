@@ -1,0 +1,300 @@
+---
+import Baselayout from "@/layouts/Baselayout.astro";
+import "@/styles/pages/app.css";
+---
+
+<Baselayout
+  title="Mi espacio — VetCare"
+  description="Gestiona tus mascotas, citas e historias clínicas."
+>
+  <div class="app-shell">
+    <aside id="sidebar" class="sidebar">
+      <a class="brand" href="/"
+        ><span><i class="ti ti-paw-filled"></i></span> VetCare</a
+      >
+      <nav aria-label="Navegación del panel">
+        <button class="nav-item active" data-view="overview"
+          ><i class="ti ti-layout-dashboard"></i><span>Resumen</span></button
+        >
+        <button class="nav-item" data-view="pets"
+          ><i class="ti ti-paw"></i><span>Mascotas</span></button
+        >
+        <button class="nav-item" data-view="appointments"
+          ><i class="ti ti-calendar-event"></i><span>Citas</span></button
+        >
+        <button class="nav-item" data-view="records"
+          ><i class="ti ti-notes"></i><span>Historias clínicas</span></button
+        >
+        <button class="nav-item" data-view="services"
+          ><i class="ti ti-stethoscope"></i><span>Servicios</span></button
+        >
+        <button class="nav-item admin-only" data-view="users" hidden
+          ><i class="ti ti-users"></i><span>Usuarios</span></button
+        >
+      </nav>
+      <div class="sidebar-bottom">
+        <button id="logout-button" class="nav-item"
+          ><i class="ti ti-logout"></i><span>Cerrar sesión</span></button
+        >
+        <div class="profile-chip">
+          <span id="profile-initials">VC</span><div>
+            <strong id="profile-name">Cargando…</strong><small id="profile-role"
+              >VetCare</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button id="menu-button" class="icon-button" aria-label="Abrir menú"
+          ><i class="ti ti-menu-2"></i></button
+        >
+        <div class="topbar-search">
+          <i class="ti ti-search"></i><input
+            id="global-search"
+            aria-label="Buscar en la vista actual"
+            placeholder="Buscar en esta sección…"
+          />
+        </div>
+        <div class="topbar-actions">
+          <span id="today-label"></span><button
+            class="icon-button"
+            aria-label="Notificaciones"
+            ><i class="ti ti-bell"></i><span class="notification-dot"
+            ></span></button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div id="welcome-banner" class="welcome-banner" hidden>
+          <div>
+            <i class="ti ti-sparkles"></i><span
+              ><strong>Tu espacio está listo.</strong> Empieza registrando a tu primera
+              mascota.</span>
+          </div><button aria-label="Cerrar"><i class="ti ti-x"></i></button>
+        </div>
+        <div id="load-error" class="form-error" role="alert"></div>
+
+        <section id="view-overview" class="view active">
+          <div class="page-heading">
+            <div>
+              <span class="eyebrow">Tu espacio VetCare</span><h1
+                class="display-serif"
+              >
+                Hola, <em id="greeting-name">bienvenido.</em>
+              </h1><p>Aquí tienes todo lo importante para cuidarles hoy.</p>
+            </div><button class="pill-button" data-create="appointment"
+              ><i class="ti ti-plus"></i> Nueva cita</button>
+          </div>
+          <div class="stats-grid">
+            <article>
+              <div class="stat-icon peach"><i class="ti ti-paw"></i></div><div>
+                <span>Mascotas activas</span><strong id="stat-pets">—</strong
+                ><small>registradas en tu cuenta</small>
+              </div>
+            </article>
+            <article>
+              <div class="stat-icon">
+                <i class="ti ti-calendar-event"></i>
+              </div><div>
+                <span>Próximas citas</span><strong id="stat-appointments"
+                  >—</strong
+                ><small>pendientes o confirmadas</small>
+              </div>
+            </article>
+            <article>
+              <div class="stat-icon"><i class="ti ti-notes"></i></div><div>
+                <span>Historias clínicas</span><strong id="stat-records"
+                  >—</strong
+                ><small>disponibles para consulta</small>
+              </div>
+            </article>
+          </div>
+          <div class="overview-grid">
+            <article class="panel next-panel">
+              <div class="panel-header">
+                <div>
+                  <span class="eyebrow">Agenda</span><h2>Próximas citas</h2>
+                </div><button class="text-button" data-view-link="appointments"
+                  >Ver todas →</button>
+              </div><div
+                id="upcoming-list"
+                class="appointment-list skeleton-list"
+              >
+                <div></div><div></div>
+              </div>
+            </article>
+            <article class="panel pets-panel">
+              <div class="panel-header">
+                <div>
+                  <span class="eyebrow">Familia</span><h2>Mis mascotas</h2>
+                </div><button
+                  class="icon-button"
+                  data-create="pet"
+                  aria-label="Agregar mascota"
+                  ><i class="ti ti-plus"></i></button>
+              </div><div id="overview-pets" class="pet-stack"></div>
+            </article>
+          </div>
+          <div class="care-tip">
+            <div class="tip-icon"><i class="ti ti-heart-filled"></i></div><div>
+              <span class="eyebrow">Consejo VetCare</span><h3>
+                Una revisión preventiva al año puede cambiarlo todo.
+              </h3><p>
+                Mantén al día sus controles, vacunas y peso para acompañar mejor
+                cada etapa.
+              </p>
+            </div><button
+              class="pill-button pill-button--ghost"
+              data-create="appointment">Agendar control</button>
+          </div>
+        </section>
+
+        <section id="view-pets" class="view">
+          <div class="page-heading compact">
+            <div>
+              <span class="eyebrow">Familia VetCare</span><h1
+                class="display-serif"
+              >
+                Mis mascotas
+              </h1><p>Perfiles y datos de quienes hacen tu casa más feliz.</p>
+            </div><button class="pill-button" data-create="pet"
+              ><i class="ti ti-plus"></i> Registrar mascota</button>
+          </div>
+          <div id="pets-grid" class="entity-card-grid"></div>
+        </section>
+
+        <section id="view-appointments" class="view">
+          <div class="page-heading compact">
+            <div>
+              <span class="eyebrow">Agenda clínica</span><h1
+                class="display-serif"
+              >
+                Citas
+              </h1><p>
+                Organiza los próximos cuidados y consulta visitas anteriores.
+              </p>
+            </div><button class="pill-button" data-create="appointment"
+              ><i class="ti ti-plus"></i> Programar cita</button>
+          </div>
+          <div class="filter-row">
+            <button class="filter active" data-status="all">Todas</button
+            ><button class="filter" data-status="PENDING">Pendientes</button
+            ><button class="filter" data-status="CONFIRMED">Confirmadas</button
+            ><button class="filter" data-status="COMPLETED">Completadas</button>
+          </div>
+          <div class="panel table-panel">
+            <div class="table-wrap">
+              <table>
+                <thead
+                  ><tr
+                    ><th>Fecha y hora</th><th>Mascota</th><th>Servicio</th><th
+                      >Veterinario</th
+                    ><th>Estado</th><th></th></tr
+                  ></thead
+                ><tbody id="appointments-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="view-records" class="view">
+          <div class="page-heading compact">
+            <div>
+              <span class="eyebrow">Memoria de su salud</span><h1
+                class="display-serif"
+              >
+                Historias clínicas
+              </h1><p>
+                Diagnósticos, tratamientos y recomendaciones en un solo lugar.
+              </p>
+            </div><button
+              class="pill-button vet-only"
+              data-create="record"
+              hidden><i class="ti ti-plus"></i> Crear historia</button>
+          </div>
+          <div id="records-list" class="records-list"></div>
+        </section>
+
+        <section id="view-services" class="view">
+          <div class="page-heading compact">
+            <div>
+              <span class="eyebrow">Atención disponible</span><h1
+                class="display-serif"
+              >
+                Servicios
+              </h1><p>Conoce las opciones de cuidado y elige la indicada.</p>
+            </div><button
+              class="pill-button admin-only"
+              data-create="service"
+              hidden><i class="ti ti-plus"></i> Nuevo servicio</button>
+          </div>
+          <div id="services-grid" class="entity-card-grid services-grid"></div>
+        </section>
+
+        <section id="view-users" class="view">
+          <div class="page-heading compact">
+            <div>
+              <span class="eyebrow">Administración</span><h1
+                class="display-serif"
+              >
+                Usuarios
+              </h1><p>Gestiona clientes, veterinarios y administradores.</p>
+            </div><button class="pill-button" data-create="user"
+              ><i class="ti ti-plus"></i> Nuevo usuario</button>
+          </div>
+          <div class="panel table-panel">
+            <div class="table-wrap">
+              <table>
+                <thead
+                  ><tr
+                    ><th>Usuario</th><th>Contacto</th><th>Rol</th><th>Estado</th
+                    ><th></th></tr
+                  ></thead
+                ><tbody id="users-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="entity-dialog">
+    <div class="dialog-card">
+      <header>
+        <div>
+          <span id="dialog-eyebrow" class="eyebrow">VetCare</span><h2
+            id="dialog-title"
+            class="display-serif"
+          >
+            Nuevo registro
+          </h2>
+        </div><button id="dialog-close" class="icon-button" aria-label="Cerrar"
+          ><i class="ti ti-x"></i></button>
+      </header>
+      <form id="entity-form">
+        <div id="dialog-error" class="form-error" role="alert"></div><div
+          id="dialog-fields"
+          class="dialog-fields"
+        >
+        </div><div class="dialog-actions">
+          <button
+            id="dialog-cancel"
+            class="pill-button pill-button--ghost"
+            type="button">Cancelar</button
+          ><button id="dialog-submit" class="pill-button" type="submit"
+            >Guardar</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status">
+    <i class="ti ti-circle-check-filled"></i><span></span>
+  </div>
+</Baselayout>
+
+<script src="../lib/pages/app.ts"></script>
+
